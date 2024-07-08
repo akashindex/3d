@@ -1,0 +1,1385 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  -ms-content-zooming: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  background-color: #000;
+  color: #fff;
+}
+#logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 12px;
+  background-color: #ffffff00;
+}
+
+#logo img {
+  width: 200px;
+  height: 76px;
+}
+
+#pano {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* If there is a fullscreen button the title bar must make space for it */
+/* body.fullscreen-enabled #titleBar {
+  display: none;
+  right: 80px;
+}
+
+body.fullscreen-enabled.mobile #titleBar {
+  right: 100px;
+} */
+
+/* If there are multiple scenes the title bar must make space for the scene list toggle */
+/* body.multiple-scenes #titleBar {
+  left: 40px;
+}
+
+body.multiple-scenes.mobile #titleBar {
+  left: 50px;
+} */
+
+#fullscreenToggle {
+  display: none;
+  position: absolute;
+  right: 24px;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  background-color: rgb(103, 115, 131);
+  background-color: rgba(103, 115, 131, 0.8);
+}
+
+.mobile #fullscreenToggle {
+  width: 50px;
+  height: 50px;
+}
+
+body.fullscreen-enabled #fullscreenToggle {
+  display: block;
+}
+
+#fullscreenToggle .icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+.mobile #fullscreenToggle .icon {
+  top: 10px;
+  right: 10px;
+}
+
+#fullscreenToggle .icon.on {
+  display: none;
+}
+
+#fullscreenToggle .icon.off {
+  display: block;
+}
+
+#fullscreenToggle.enabled .icon.on {
+  display: block;
+}
+
+#fullscreenToggle.enabled .icon.off {
+  display: none;
+}
+
+#autorotateToggle {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  background-color: rgb(103, 115, 131);
+  background-color: rgba(103, 115, 131, 0.8);
+}
+
+.mobile #autorotateToggle {
+  width: 50px;
+  height: 50px;
+}
+
+/* If there is a fullscreen button, autorotate must placed a bit to the left */
+body.fullscreen-enabled #autorotateToggle {
+  right: 64px;
+}
+
+body.fullscreen-enabled.mobile #autorotateToggle {
+  right: 50px;
+}
+
+#autorotateToggle .icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+.mobile #autorotateToggle .icon {
+  top: 10px;
+  right: 10px;
+}
+
+#autorotateToggle .icon.on {
+  display: none;
+}
+
+#autorotateToggle .icon.off {
+  display: block;
+}
+
+#autorotateToggle.enabled .icon.on {
+  display: block;
+}
+
+#autorotateToggle.enabled .icon.off {
+  display: none;
+}
+
+#sceneList {
+  position: absolute;
+  top: 0;
+  left: -220px;
+  padding-top: 40px;
+  width: 220px;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-left: 0;
+  -webkit-transition: margin-left 0.5s ease-in-out;
+  transition: margin-left 0.5s ease-in-out;
+}
+
+.mobile #sceneList {
+  padding-top: 50px;
+}
+
+#sceneList .scenes {
+  display: none;
+  width: 100%;
+  background-color: rgb(58, 68, 84);
+  background-color: rgba(58, 68, 84, 0.8);
+}
+
+.mobile #sceneList {
+  width: 100%;
+  height: 100%;
+  left: -100%;
+}
+
+.mobile #sceneList.enabled {
+  margin-left: 100%;
+}
+
+.mobile #sceneList .scenes {
+  height: 100%;
+}
+
+#sceneList.enabled {
+  margin-left: 220px;
+}
+
+#sceneList .scene {
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+
+.mobile #sceneList .scene {
+  height: 40px;
+}
+
+#sceneList .scene .text {
+  width: 100%;
+  height: 100%;
+  padding: 0 15px;
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile #sceneList .scene .text {
+  line-height: 40px;
+}
+
+.no-touch #sceneList .scene:hover {
+  background-color: rgb(103, 115, 131);
+  background-color: rgba(103, 115, 131, 0.8);
+}
+
+#sceneList .scene.current {
+  background-color: rgb(103, 115, 131);
+  background-color: rgba(103, 115, 131, 0.8);
+}
+
+/* Hide scene list when only a single scene exists */
+body.single-scene #sceneList,
+body.single-scene #sceneListToggle {
+  display: none;
+}
+
+/* Link hotspot */
+
+.link-hotspot {
+  width: 60px;
+  height: 60px;
+  margin-left: -30px;
+  margin-top: -30px;
+  opacity: 0.9;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.no-touch .link-hotspot:hover {
+  opacity: 1;
+}
+
+.mobile .link-hotspot {
+  width: 70px;
+  height: 70px;
+}
+
+.link-hotspot-icon {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.link-hotspot-tooltip {
+  position: absolute;
+  left: 100%;
+  top: 14px; /* ( 60 - (16 + 2*8) ) / 2 */
+
+  margin-left: 3px;
+
+  font-size: 16px;
+
+  max-width: 300px;
+
+  padding: 8px 10px;
+
+  border-radius: 5px;
+
+  background-color: rgb(58, 68, 84);
+  background-color: rgba(58, 68, 84, 0.8);
+
+  color: #fff;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  -ms-transform: translateX(-8px);
+  -webkit-transform: translateX(-8px);
+  transform: translateX(-8px);
+
+  -webkit-transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s,
+    opacity 0.3s;
+  transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s,
+    opacity 0.3s;
+}
+
+.mobile .link-hotspot {
+  top: 19px; /* ( 70 - (16 + 2*8) ) / 2 */
+}
+
+.no-touch .link-hotspot:hover .link-hotspot-tooltip {
+  opacity: 1;
+  -ms-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+/* Prevent tooltip from triggering */
+.link-hotspot-tooltip {
+  pointer-events: none;
+}
+.no-touch .link-hotspot:hover .link-hotspot-tooltip {
+  pointer-events: all;
+}
+
+/* Fallback mode without pointer-events (IE8-10) */
+.tooltip-fallback .link-hotspot-tooltip {
+  display: none;
+}
+.no-touch .tooltip-fallback .link-hotspot:hover .link-hotspot-tooltip {
+  display: block;
+}
+
+/* Info hotspot */
+
+.info-hotspot {
+  line-height: 1.2em;
+  opacity: 0.9;
+  -webkit-transition: opacity 0.2s 0.2s;
+  transition: opacity 0.2s 0.2s;
+}
+
+.no-touch .info-hotspot:hover {
+  opacity: 1;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.info-hotspot.visible {
+  opacity: 1;
+}
+
+.info-hotspot .info-hotspot-header {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgb(103, 115, 131);
+  cursor: pointer;
+  -webkit-transition: width 0.3s ease-in-out 0.5s,
+    border-radius 0.3s ease-in-out 0.5s;
+  transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s;
+}
+
+.mobile .info-hotspot .info-hotspot-header {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+.desktop.no-touch .info-hotspot .info-hotspot-header:hover {
+  width: 260px;
+  border-radius: 5px;
+  -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+}
+
+.desktop .info-hotspot.visible .info-hotspot-header,
+.desktop.no-touch .info-hotspot.visible .info-hotspot-header:hover {
+  width: 260px;
+  border-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+}
+
+.info-hotspot .info-hotspot-icon-wrapper {
+  width: 40px;
+  height: 40px;
+}
+
+.mobile .info-hotspot .info-hotspot-icon-wrapper {
+  width: 50px;
+  height: 50px;
+}
+
+.info-hotspot .info-hotspot-icon {
+  width: 90%;
+  height: 90%;
+  margin: 5%;
+}
+
+.info-hotspot .info-hotspot-title-wrapper {
+  position: absolute;
+  left: 40px;
+  top: 0;
+  width: 0;
+  height: 40px;
+  padding: 0;
+  overflow: hidden;
+  -webkit-transition: width 0s 0.4s, padding 0s 0.4s;
+  transition: width 0s 0.4s, padding 0s 0.4s;
+}
+
+.desktop .info-hotspot.visible .info-hotspot-title-wrapper,
+.desktop.no-touch
+  .info-hotspot
+  .info-hotspot-header:hover
+  .info-hotspot-title-wrapper {
+  width: 220px;
+  padding: 0 5px;
+  -webkit-transition: width 0s 0.4s, padding 0s 0.4s;
+  transition: width 0s 0.4s, padding 0s 0.4s;
+}
+
+.info-hotspot .info-hotspot-title-wrapper:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.info-hotspot .info-hotspot-title {
+  display: inline-block;
+  vertical-align: middle;
+
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.info-hotspot .info-hotspot-close-wrapper {
+  position: absolute;
+  left: 260px;
+  top: 0;
+  height: 40px;
+  width: 40px;
+  border-top-right-radius: 5px;
+  background-color: rgb(78, 88, 104);
+  visibility: hidden;
+  -ms-transform: perspective(200px) rotateY(90deg);
+  -webkit-transform: perspective(200px) rotateY(90deg);
+  transform: perspective(200px) rotateY(90deg);
+  -ms-transform-origin: 0 50% 0;
+  -webkit-transform-origin: 0 50% 0;
+  transform-origin: 0 50% 0;
+  -webkit-transition: -ms-transform 0.3s 0.3s, -webkit-transform 0.3s 0.3s,
+    transform 0.3s 0.3s, visibility 0s 0.6s;
+  transition: -ms-transform 0.3s 0.3s, -webkit-transform 0.3s 0.3s,
+    transform 0.3s 0.3s, visibility 0s 0.6s;
+}
+
+.desktop .info-hotspot.visible .info-hotspot-close-wrapper {
+  visibility: visible;
+  -ms-transform: perspective(200px) rotateY(0deg);
+  -webkit-transform: perspective(200px) rotateY(0deg);
+  transform: perspective(200px) rotateY(0deg);
+  -webkit-transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s,
+    visibility 0s 0s;
+  transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s,
+    visibility 0s 0s;
+}
+
+.info-hotspot .info-hotspot-close-icon {
+  width: 70%;
+  height: 70%;
+  margin: 15%;
+}
+
+.info-hotspot .info-hotspot-text {
+  position: absolute;
+  width: 300px;
+  height: auto;
+  max-height: 200px;
+  top: 40px;
+  left: 0;
+  padding: 10px;
+  background-color: rgb(58, 68, 84);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  overflow-y: auto;
+  visibility: hidden;
+  /* rotate(90deg) causes transition flicker on Firefox 58 */
+  -ms-transform: perspective(200px) rotateX(-89.999deg);
+  -webkit-transform: perspective(200px) rotateX(-89.999deg);
+  transform: perspective(200px) rotateX(-89.999deg);
+  -ms-transform-origin: 50% 0 0;
+  -webkit-transform-origin: 50% 0 0;
+  transform-origin: 50% 0 0;
+  -webkit-transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s,
+    visibility 0s 0.3s;
+  transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s,
+    visibility 0s 0.3s;
+
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.desktop .info-hotspot.visible .info-hotspot-text {
+  visibility: visible;
+  -ms-transform: perspective(200px) rotateX(0deg);
+  -webkit-transform: perspective(200px) rotateX(0deg);
+  transform: perspective(200px) rotateX(0deg);
+  -webkit-transition: -ms-transform 0.3s 0.3s, -webkit-transform 0.3s 0.3s,
+    transform 0.3s 0.3s, visibility 0s 0s;
+  transition: -ms-transform 0.3s 0.3s, -webkit-transform 0.3s 0.3s,
+    transform 0.3s 0.3s, visibility 0s 0s;
+}
+
+/* Info hotspot modal */
+
+.desktop .info-hotspot-modal {
+  display: none;
+}
+
+.info-hotspot-modal {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 23344;
+  background-color: rgba(0, 0, 0, 0.5);
+  line-height: 1.2em;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.2s ease-in-out 0.5s, visibility 0s 0.7s;
+  transition: opacity 0.2s ease-in-out 0.5s, visibility 0s 0.7s;
+}
+
+.info-hotspot-modal.visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.2s ease-in-out, visibility 0s 0s;
+  transition: opacity 0.2s ease-in-out, visibility 0s 0s;
+}
+
+.info-hotspot-modal .info-hotspot-header {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  right: 10px;
+  width: auto;
+  height: 50px;
+  background-color: rgb(103, 115, 131);
+  background-color: rgba(103, 115, 131, 0.8);
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in-out 0.2s;
+  transition: opacity 0.3s ease-in-out 0.2s;
+}
+
+.info-hotspot-modal.visible .info-hotspot-header {
+  opacity: 1;
+  -webkit-transition: opacity 0.3s ease-in-out 0.2s;
+  transition: opacity 0.3s ease-in-out 0.2s;
+}
+
+.info-hotspot-modal .info-hotspot-icon-wrapper {
+  width: 50px;
+  height: 50px;
+}
+
+.info-hotspot-modal .info-hotspot-icon {
+  width: 90%;
+  height: 90%;
+  margin: 5%;
+}
+
+.info-hotspot-modal .info-hotspot-title-wrapper {
+  position: absolute;
+  top: 0;
+  left: 50px;
+  right: 50px;
+  width: auto;
+  height: 50px;
+  padding: 0 10px;
+}
+
+.info-hotspot-modal .info-hotspot-title-wrapper:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.info-hotspot-modal .info-hotspot-title {
+  display: inline-block;
+  vertical-align: middle;
+
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.info-hotspot-modal .info-hotspot-close-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(78, 88, 104);
+  background-color: rgba(78, 88, 104, 0.8);
+  cursor: pointer;
+}
+
+.info-hotspot-modal .info-hotspot-close-icon {
+  width: 70%;
+  height: 70%;
+  margin: 15%;
+}
+
+.info-hotspot-modal .info-hotspot-text {
+  position: absolute;
+  top: 110px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: rgb(58, 68, 84);
+  background-color: rgba(58, 68, 84, 0.8);
+  overflow-y: auto;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.info-hotspot-modal.visible .info-hotspot-text {
+  opacity: 1;
+  -webkit-transition: opacity 0.3s ease-in-out 0.4s;
+  transition: opacity 0.3s ease-in-out 0.4s;
+}
+
+/* View control buttons */
+
+.viewControlButton {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  background-color: rgb(103, 115, 131);
+  background-color: rgba(103, 115, 131, 0.8);
+}
+
+body.view-control-buttons .viewControlButton {
+  display: block;
+}
+
+/* Hide controls when width is too small */
+@media (max-width: 600px) {
+  body.view-control-buttons .viewControlButton {
+    display: none;
+  }
+}
+
+.viewControlButton .icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+/* Center is at margin-left: -20px */
+.viewControlButton-1 {
+  margin-left: -145px;
+}
+.viewControlButton-2 {
+  margin-left: -95px;
+}
+.viewControlButton-3 {
+  margin-left: -45px;
+}
+.viewControlButton-4 {
+  margin-left: 5px;
+}
+.viewControlButton-5 {
+  margin-left: 55px;
+}
+.viewControlButton-6 {
+  margin-left: 105px;
+}
+/* New popup code */
+.new-popup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 300px;
+  height: 250px;
+  margin-top: 16px;
+}
+.main {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 1;
+  width: 270px;
+  height: auto;
+  margin-left: 12px;
+}
+.main img {
+  z-index: 9999;
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+.text {
+  margin-top: 16px;
+  color: white;
+  text-align: center;
+}
+
+.popup-main {
+  display: none;
+  position: fixed;
+ 
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.close-icon {
+  position: absolute;
+ 
+  top: 0px;
+  right: 0px;
+  color: rgb(255, 255, 255);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-family: inherit;
+  width: 50px;
+  height: 50px;
+  background-color: #000000;
+  border-radius: 100%;
+}
+.main-content{
+  position: relative;
+  left: 32%;
+  right: 35%;
+  margin: 0px 50px;
+ width: 700px;
+}
+/* Adjustments for tablets */
+@media (max-width: 991px) {
+  .close-icon {
+    top: 0px;
+    right: 0px;
+    font-size: 22px;
+    width: 45px;
+    height: 45px;
+    background-color: black;
+    color: #ffff;
+  }
+  .main-content{
+    position: relative;
+    left: 0;
+    right: 0;
+    
+   width: auto;
+  }
+}
+
+/* Adjustments for smaller devices */
+@media (max-width: 768px) {
+  .close-icon {
+    top: 0px;
+    right: 0px;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+  }
+  .main-content{
+    position: relative;
+    left: 0;
+    right: 0;
+    
+   width: auto;
+  }
+}
+
+/* Adjustments for very small devices */
+@media (max-width: 576px) {
+  .close-icon {
+    top: 0px;
+    right: 0px;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+  
+  }
+  .main-content{
+    position: relative;
+    left: 0;
+    right: 0;
+    
+   width: auto;
+  }
+}
+
+.popup-image {
+  height: 90%;
+  object-fit: contain;
+  width: 100%;
+  z-index: 9999;
+}
+
+.close-icons {
+  cursor: pointer;
+}
+
+/* Information Popup */
+.icon-buttons {
+  position: fixed;
+  bottom: 0;
+  right: 116px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.icon-buttons .icon {
+  width: 40px;
+  height: 40px;
+  background-color: #7b848f;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  cursor: pointer;
+}
+.icon img {
+  width: 100%;
+}
+.ml-6 {
+  margin-right: 10px !important;
+}
+#audioButton {
+  background-color: #777e87;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
+  text-align: center;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px 50px;
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: justify;
+  color: black;
+  z-index: 9999;
+  display: none;
+}
+.close {
+  color: #000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-content h3 {
+  font: revert;
+  margin: 13px 0;
+}
+.modal-content ol {
+  margin: 16px 0;
+  list-style: auto;
+}
+.modal-content li {
+  line-height: 1.5;
+  font-size: 12px;
+}
+/* Instruction Modal Content */
+.modals {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.instruction-popup {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px 50px;
+  width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+}
+.instruction-popup h3 {
+  font: revert;
+  margin: 13px 0;
+}
+
+.instruction-popup ol {
+  margin: 12px 0;
+  padding: 0 12px;
+  list-style: auto;
+  font-size: 12px; 
+}
+@media (max-width: 576px) {
+  .instruction-popup h3 {
+    font-size: 12px;
+  }
+  .instruction-popup ol {
+    font-size: 8px; 
+  }
+}
+.instruction-popup li {
+  line-height: 1.5;
+}
+.closes {
+  color: #000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closes:hover,
+.closes:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.rotate-animation {
+  animation: rotate360 2s linear infinite;
+}
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media query for small screens */
+@media (max-width: 576px) {
+  .main {
+    width: 130px; /* Decrease width for small screens */
+  }
+  .modal-content ol {
+    padding: 0 12px;
+  }
+  .modal-content h3 {
+    font-size: 12px;
+  }
+  .close {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 10px;
+    color: #000;
+  }
+  .modal-content {
+    width: 96% !important;
+    padding: 0 14px;
+  }
+  .modal-content li {
+    font-size: 8px;
+  }
+  /* Bathroom and Kitchen styles*/
+  /* .popup-main {
+    width: 80%;
+    height: 52%;
+    padding: 12px 0px;
+  } */
+ 
+  /* instructions model styles */
+  .instruction-popup {
+    padding: 0 14px;
+    width: 90%;
+  }
+  .closes {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 10px;
+    color: #000;
+  }
+  /* system icons */
+  .icon-buttons {
+    right: 78px;
+    align-items: self-end;
+  }
+  .icon-buttons .icon {
+    width: 28px;
+    height: 28px;
+  }
+  .icon-buttons .icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  #audioButton {
+    width: 28px;
+    height: 28px;
+  }
+  #audioButton svg {
+    width: 16px;
+    height: 16px;
+  }
+  .mobile #autorotateToggle {
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .mobile #autorotateToggle img {
+    width: 17px;
+    height: 17px;
+  }
+  body.fullscreen-enabled.mobile #autorotateToggle {
+    right: 80px;
+  }
+  .mobile #autorotateToggle .icon {
+    top: 7px;
+    right: 7px;
+  }
+  #fullscreenToggle {
+    display: none !important;
+  }
+
+  #autorotateToggle {
+    width: 28px;
+    height: 28px;
+  }
+  #autorotateToggle img {
+    width: 16px !important;
+    height: 16px !important;
+    top: 7px !important;
+    right: 6px !important;
+  }
+  body.fullscreen-enabled #autorotateToggle {
+    right: 0 !important;
+  }
+  body.fullscreen-enabled.mobile #autorotateToggle {
+    right: 42px;
+  }
+  #fullscreenToggle {
+    right: 16px !important;
+  }
+  .icon-buttons {
+    right: 37px;
+  }
+  #logo img {
+    width: 100px;
+    height:auto;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .main {
+    width: 180px;
+  }
+  .modal-content ol {
+    padding: 0 12px;
+  }
+  .modal-content {
+    width: 92%;
+    padding: 6 16x;
+  }
+  /* Bathroom and Kitchen styles*/
+  /* .popup-main {
+    width: 58%;
+    height: 52%;
+    padding: 12px 0px;
+    transform: translate(-42%, -50%);
+  } */
+
+  /* instructions model styles */
+  .instruction-popup {
+    width: 82%;
+  }
+  .instruction-popup h3 {
+    font-size: 16px;
+  }
+  .instruction-popup li {
+    font-size: 14px;
+    line-height: 2;
+  }
+  .closes {
+    font-size: 20px;
+  }
+  /* system icons */
+  .icon-buttons {
+    right: 78px;
+    align-items: self-end;
+  }
+  .icon-buttons .icon {
+    width: 28px;
+    height: 28px;
+  }
+  .icon-buttons .icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  #audioButton {
+    width: 28px;
+    height: 28px;
+  }
+  #audioButton svg {
+    width: 16px;
+    height: 16px;
+  }
+  .mobile #autorotateToggle {
+    right: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .mobile #autorotateToggle img {
+    width: 17px;
+    height: 17px;
+  }
+  body.fullscreen-enabled.mobile #autorotateToggle {
+    right: 80px;
+  }
+  .mobile #autorotateToggle .icon {
+    top: 7px;
+    right: 7px;
+  }
+  #autorotateToggle {
+    width: 28px;
+    height: 28px;
+    right: 38px !important;
+  }
+  #autorotateToggle img {
+    width: 17px !important;
+    height: 17px !important;
+  }
+  #fullscreenToggle {
+    width: 28px;
+    height: 28px;
+    right: 12px;
+  }
+  #fullscreenToggle img {
+    width: 17px !important;
+    height: 17px !important;
+  }
+  /* system icons center styles */
+  .viewControlButton {
+    width: 28px;
+    height: 28px;
+    left: 44%;
+  }
+  .viewControlButton img {
+    width: 17px !important;
+    height: 17px !important;
+  }
+  .mobile #fullscreenToggle {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .mobile #fullscreenToggle img {
+    top: 5px !important;
+    right: 5px !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .main {
+    width: 200px; /* Decrease width for small screens */
+  }
+  .modal-content ol {
+    padding: 0 12px;
+  }
+  .modal-content {
+    width: 92%;
+    padding: 0 14px;
+  }
+  /* Bathroom and Kitchen styles*/
+  /* .popup-main {
+    width: 50%;
+    height: 70%;
+    padding: 12px 0px;
+    transform: translate(-42%, -50%);
+  } */
+  /* instructions model styles */
+  .instruction-popup {
+    width: 82%;
+    padding: 14px 24px;
+  }
+  .instruction-popup h3 {
+    font-size: 16px;
+  }
+  .instruction-popup li {
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  /* system icons */
+  .icon-buttons {
+    right: 91px;
+    align-items: self-end;
+  }
+  .icon-buttons .icon {
+    width: 36px;
+    height: 36px;
+  }
+  .icon-buttons .icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  #audioButton {
+    width: 36px;
+    height: 36px;
+  }
+  #audioButton svg {
+    width: 20px;
+    height: 20px;
+  }
+  .mobile #autorotateToggle {
+    right: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .mobile #autorotateToggle img {
+    width: 20px;
+    height: 20px;
+  }
+  body.fullscreen-enabled.mobile #autorotateToggle {
+    right: 80px;
+  }
+  #autorotateToggle {
+    width: 36px;
+    height: 36px;
+    right: 46px !important;
+  }
+  #autorotateToggle img {
+    top: 9px !important;
+    right: 8px !important;
+    width: 20px !important;
+    height: 20px !important;
+  }
+  #fullscreenToggle {
+    width: 36px !important;
+    height: 36px !important;
+    right: 12px;
+  }
+  #fullscreenToggle img {
+    width: 20px !important;
+    height: 20px !important;
+    top: 9px !important;
+    right: 8px !important;
+  }
+
+  /* system icons center styles */
+  .viewControlButton {
+    width: 36px;
+    height: 36px;
+    left: 51%;
+  }
+  .viewControlButton img {
+    right: 9px !important;
+    top: 9px !important;
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+.icon-play-pause {
+  margin: 0 auto;
+  display: none;
+}
+
+.icon-play-pause.active {
+  display: inline-block;
+}
+
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.text-num {
+  font-size: 0.875em;
+}
+
+@media screen and (min-width: 992px) {
+  .text-num br {
+    display: none;
+  }
+}
+
+.icon-play-pause {
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .icon-play-pause {
+    width: 16px;
+    height: 16px;
+  }
+}

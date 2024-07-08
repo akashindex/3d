@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>VR Tour – Sample Flat 4 虛擬實境導覽–樣本單位4</title>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+  <style>
+    @-ms-viewport {
+      width: device-width;
+    }
+  </style>
+  <link rel="stylesheet" href="vendor/reset.min.css">
+  <link rel="stylesheet" href="style.css?v=11">
+</head>
+
+<body class="multiple-scenes view-control-buttons">
+
+  <div id="pano"></div>
+  <div id="titleBar">
+    <h1 class="sceneName sr-only">VR Tour – Sample Flat 4 虛擬實境導覽–樣本單位4</h1>
+  </div>
+  <div id="logo">
+    <img src="img/main-logo.png" alt="香港房屋委員會 Hong Kong Housing Authority" />
+  </div>
+  <!-- Add overlay element -->
+  <div id="overlay"></div>
+  <!-- this for delete -->
+  <div id="sceneList">
+    <ul class="scenes">
+      <li class="text"><a href="javascript:void(0)" class="scene" data-id="0-1">To this location 往該位置</a></li>
+
+      <li class="text"><a href="javascript:void(0)" class="scene" data-id="1-2">To this location 往該位置</a></li>
+
+      <li class="text"><a href="javascript:void(0)" class="scene" data-id="2-3">To this location 往該位置</a></li>
+
+      <li class="text"><a href="javascript:void(0)" class="scene" data-id="3-4">To this location 往該位置</a></li>
+
+      <li class="text"><a href="javascript:void(0)" class="scene" data-id="4-5">To this location 往該位置</a></li>
+
+    </ul>
+  </div>
+  <!-- New popup code -->
+  <div class="new-popup-container">
+    <div class="main" id="myBtn2" tabindex="0" role="dialog" ibedby="modalDesc" aria-modal="true">
+      <img src="img/kitchen-bathroom.jpg" role="button" aria-label="單位布局圖 Flat Layout Plan"
+        alt="單位布局圖 Flat Layout Plan" />
+      <p class="text">實用面積 Saleable Area<br /><span class="text-num">26.3 平方米 (sq.m) / <br>283 平方呎 (sq.ft)</span></p>
+    </div>
+
+    <div class="popup-main" id="popupmain">
+<div class="main-content">
+  <button type="button" aria-label="Close 關閉" class="close-icon">&times;</button>
+
+
+  <img class="popup-image" src="img/kitchen-bathroom-popup.jpg" alt="單位布局圖 Flat Layout Plan
+        註: 本圖只用作方便準買方觀看房委會提供的回收單位虛擬實境導覽時，對相關單位的內部布局有較佳的了解。本圖並不旨在反映任何單位目前的實際情況及狀況，僅供參考。
+        Note: This plan is for facilitating the prospective purchasers to have a better understanding of the internal layout of the relevant flat when viewing the virtual reality tours for recovered flats provided by the HA. It does not aim to reflect the prevailing physical state and condition of any flat and is for reference only.
+        " />
+</div>
+     
+    </div>
+  </div>
+
+
+
+  <a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
+    <img class="icon" role="button" aria-label="向上 Look Up" src="img/up.png" alt="向上 Look Up" />
+  </a>
+  <a href="javascript:void(0)" id="viewDown" class="viewControlButton viewControlButton-2">
+    <img class="icon" role="button" aria-label="向下 Look Down" src="img/down.png" alt="向下 Look Down" />
+  </a>
+  <a href="javascript:void(0)" id="viewLeft" class="viewControlButton viewControlButton-3">
+    <img class="icon" role="button" aria-label="向左 Look Left" src="img/left.png" alt="向左 Look Left" />
+  </a>
+  <a href="javascript:void(0)" id="viewRight" class="viewControlButton viewControlButton-4" tabindex="0">
+    <img class="icon" role="button" aria-label="向右 Look Right" src="img/right.png" alt="向右 Look Right" />
+  </a>
+  <a href="javascript:void(0)" id="viewIn" class="viewControlButton viewControlButton-5">
+    <img class="icon" role="button" aria-label="放大 Zoom In" src="img/plus.png" alt="放大 Zoom In" />
+  </a>
+  <a href="javascript:void(0)" id="viewOut" class="viewControlButton viewControlButton-6">
+    <img class="icon" role="button" aria-label="縮小 Zoom Out" src="img/minus.png" alt="縮小 Zoom Out" />
+  </a>
+
+  <div class="icon-buttons">
+    <div class="icon ml-6" id="infoBtn" tabindex="0" role="button" aria-label="備註 Notes">
+      <svg width="12" height="30" viewBox="0 0 12 30" fill="none">
+        <path
+          d="M3 3C3 2.20435 3.31607 1.44129 3.87868 0.87868C4.44129 0.316071 5.20435 0 6 0C6.79565 0 7.55871 0.316071 8.12132 0.87868C8.68393 1.44129 9 2.20435 9 3C9 3.79565 8.68393 4.55871 8.12132 5.12132C7.55871 5.68393 6.79565 6 6 6C5.20435 6 4.44129 5.68393 3.87868 5.12132C3.31607 4.55871 3 3.79565 3 3ZM0 12C0 10.8937 0.89375 10 2 10H6C7.10625 10 8 10.8937 8 12V26H10C11.1063 26 12 26.8937 12 28C12 29.1063 11.1063 30 10 30H2C0.89375 30 0 29.1063 0 28C0 26.8937 0.89375 26 2 26H4V14H2C0.89375 14 0 13.1063 0 12Z"
+          fill="white" />
+      </svg>
+    </div>
+    <div class="icon ml-6" id="myBtns" tabindex="0" role="button" aria-label="使用說明 Instructions">
+      <svg width="30" height="30" viewBox="0 0 30 44" fill="none">
+        <path
+          d="M15.0401 0C8.23557 0 3.82822 2.78793 0.368005 7.75997C-0.259691 8.66192 -0.0661734 9.89856 0.80943 10.5625L4.48695 13.3509C5.37125 14.0214 6.62945 13.8646 7.32177 12.9973C9.4572 10.3221 11.0412 8.78178 14.3768 8.78178C16.9994 8.78178 20.2434 10.4696 20.2434 13.0128C20.2434 14.9354 18.6563 15.9228 16.0667 17.3746C13.0469 19.0676 9.05073 21.1747 9.05073 26.4456V27.28C9.05073 28.41 9.96674 29.326 11.0967 29.326H17.2749C18.4049 29.326 19.3209 28.41 19.3209 27.28V26.7879C19.3209 23.1341 30 22.9819 30 13.0944C30.0001 5.64833 22.2763 0 15.0401 0ZM14.1859 31.8374C10.9296 31.8374 8.28049 34.4866 8.28049 37.7428C8.28049 40.9989 10.9296 43.648 14.1859 43.648C17.4421 43.648 20.0912 40.9989 20.0912 37.7427C20.0912 34.4865 17.4421 31.8374 14.1859 31.8374Z"
+          fill="white" />
+      </svg>
+    </div>
+    <!-- Play/Pause Button -->
+    <button id="audioButton" onclick="toggleAudio()" aria-label="播放音樂 Play music" role="button" class="ml-6">
+      <!-- play icon -->
+      <img id="icon-play" class="icon-play-pause active" role="button" aria-label="播放音樂 Play music"
+        src="img/music-note-play.png" alt="播放音樂 Play music">
+      <!-- pause icon -->
+      <img id="icon-pause" class="icon-play-pause" role="button" aria-label="停止音樂 Stop music"
+        src="img/music-note-pause.png" alt="停止音樂 Stop music">
+    </button>
+  </div>
+  <div class="system-icons">
+    <a href="javascript:void(0)" id="autorotateToggle" class="ml-6">
+      <img class="icon off" role="button" aria-label="自動旋轉開啟 Autorotation enable" src="img/play.png"
+        alt="自動旋轉開啟 Autorotation enable" />
+      <img class="icon on" role="button" aria-label="自動旋轉暫停 Autorotation disable" src="img/pause-cross.png"
+        alt="自動旋轉暫停 Autorotation disable" />
+    </a>
+
+    <a href="javascript:void(0)" id="fullscreenToggle">
+      <img class="icon off" role="button" aria-label="開啟全螢幕 Fullscreen enable" src="img/fullscreen.png"
+        alt="開啟全螢幕 Fullscreen enable" />
+      <img class="icon on" role="button" aria-label="退出全螢幕 Fullscreen disable" src="img/windowed.png"
+        alt="退出全螢幕 Fullscreen disable" />
+    </a>
+  </div>
+
+  <!-- Information Model -->
+  <div class="modals" id="modal-info" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDesc" aria-modal="true" aria-expanded="true" style="display: none;">
+
+    <div class="instruction-popup">
+      <span class="close" role="button" tabindex="0" id="xyz" aria-label="關閉 Close">×</span>
+
+      <h3>備註 Notes</h3>
+      <ol>
+        <li>
+          <p>此虛擬實境導覽拍攝日期：2024年1月16日<br>Date of shooting of this Virtual Reality (VR) tour: 16 January 2024</br></p>
+
+        </li>
+        <li>
+          <p>
+            此虛擬實境導覽經電腦修飾處理，僅供參考。虛擬實境導覽僅作展示相關單位的內部布局之用，並不構成亦不得詮釋為關於任何住宅物業內的裝置、裝修物料及設備及/或任何發展項目的任何住宅物業景觀的任何陳述或保證。於任何情況或時間，準買方不應以此虛擬實境導覽之任何內容、資料或概念作依據或受其影響決定購買或於何時購買任何住宅物業。</br>
+            This VR tour has been edited and processed with computerized imaging techniques and are for reference only.
+            The VR tour is for showing the internal layout of the relevant flat only and does not constitute and shall
+            not be construed as constituting any representation and warranty in respect of the fittings, finishes and
+            appliances in any residential property and/or the view from any residential property in any development. In
+            any circumstances or at any time, prospective purchasers shall not rely on or be affected by any content,
+            information or concept of this VR tour in deciding whether to purchase or when to purchase any residential
+            property.</p>
+        </li>
+        <li>
+          <p>此虛擬實境導覽的內容，均受到房委會的版權規限。除了事先得到房委會的書面授權外，嚴禁將該等版權作品複製、改編、分發、散布，或提供予公眾。
+            <br>The content of this VR tour is subject to copyright owned by the HA. Except where prior written
+            authorization has been obtained from the HA, any reproduction, adaptation, distribution, dissemination or
+            making available of such copyrighted material to the public is strictly prohibited.</br>
+          </p>
+        </li>
+        <li>
+          <p>此虛擬實境導覽由賣方(香港房屋委員會)或賣方同意下發布。
+            <br>虛擬實境導覽製作日期：2024年1月24日
+            <br>This VR Tour is published by, or with the consent of, the vendor (Hong Kong Housing Authority).
+            <br>Date of production of this VR Tour: 24 January 2024
+          </p>
+
+        </li>
+      </ol>
+    </div>
+
+  </div>
+  <a href="javascript:void(0)" id="sceneListToggle" style="display:none;"></a>
+
+  <!-- intstruction Popup Model content -->
+  <div id="myModals" class="modals" tabindex="-1" role="dialog" aria-modal="true">
+    <!-- Modal content -->
+    <div id="instruction-popup" class="instruction-popup">
+      <span class="closes" role="button" aria-label="關閉 Close">&times;</span>
+      <h3><b>使用說明 Instruction</b></h3>
+      <ol>
+        <li>
+          <p>點擊地面上的箭咀圖示以從該位置觀看虛擬實境導覽。
+            <br>Click the arrow buttons on the ground to view the VR tour at that location.</br>
+          </p>
+        </li>
+        <li>
+          <p>按左/右箭咀圖示觀看左方/右方位置。
+            <br>View horizontally by pressing “left/right” arrow buttons.</br>
+          </p>
+        </li>
+        <li>
+          <p>按上/下箭咀圖示觀看上方/下方位置。
+            <br>View vertically by pressing “up/down” arrow buttons.</br>
+          </p>
+        </li>
+      </ol>
+    </div>
+    <audio id="backgroundAudio" autoplay>
+      <source src="./C.mp3" type="audio/mpeg" type="audio/mpeg" />
+    </audio>
+  </div>
+
+  <script src="vendor/screenfull.min.js"></script>
+  <script src="vendor/bowser.min.js"></script>
+  <script src="vendor/marzipano.js"></script>
+
+  <script src="data.js?v=2"></script>
+  <script src="index.js?v=5"></script>
+
+</body>
+
+</html>
